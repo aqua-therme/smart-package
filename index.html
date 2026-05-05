@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aquatherme</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:#0a0a14;
+  color:white;
+  scroll-behavior:smooth;
+}
+
+/* ANIMATIONS */
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+.fade.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:url('https://images.unsplash.com/photo-1502741338009-cac2772e18bc') center/cover;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.65);
+}
+
+/* LOGO */
+.logo{
+  width:280px;
+  margin-bottom:20px;
+  z-index:2;
+}
+
+/* FLOATING BOTTLES */
+.bottle-bg{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+.floating{
+  position:absolute;
+  width:70px;
+  height:170px;
+  background:rgba(255,255,255,0.08);
+  border-radius:40px;
+  animation:float 12s infinite ease-in-out;
+}
+.floating:nth-child(1){left:10%;animation-delay:0s;}
+.floating:nth-child(2){left:50%;animation-delay:3s;}
+.floating:nth-child(3){left:80%;animation-delay:6s;}
+
+@keyframes float{
+  0%{transform:translateY(100vh);}
+  100%{transform:translateY(-200px);}
+}
+
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  background:#0f0f1a;
+  padding:12px;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  border-bottom:1px solid #222;
+}
+
+/* SECTIONS */
+section{
+  padding:100px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* BACKGROUND */
+.bg{
+  background:url('https://images.unsplash.com/photo-1618477460930-d8b0f7d9c98c') center/cover;
+  position:relative;
+}
+.bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.75);
+}
+.content{position:relative;}
+
+/* CARD */
+.card{
+  background:rgba(20,20,35,0.85);
+  padding:30px;
+  border-radius:18px;
+  backdrop-filter:blur(10px);
+}
+
+/* TITLES */
+h2{color:#d8a4ff}
+
+/* SIMULATION */
+.bottle{
+  width:120px;
+  height:260px;
+  margin:30px auto;
+  border-radius:60px;
+  background:#cdb4db;
+  position:relative;
+  overflow:hidden;
+}
+.liquid{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:30%;
+  background:linear-gradient(#9d4edd,#c77dff);
+  transition:1s;
+}
+.label{
+  position:absolute;
+  bottom:40px;
+  left:10px;
+  right:10px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+/* SLIDER */
+input[type=range]{width:100%;}
+
+/* TEAM */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+.member{
+  background:rgba(255,255,255,0.05);
+  padding:15px;
+  border-radius:12px;
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  opacity:0.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero fade">
+
+  <img src="logo.png" class="logo">
+
+  <p>
+  Une technologie de packaging intelligent capable de révéler les effets invisibles de la chaleur sur les matériaux plastiques et la qualité de l’eau.
+  </p>
+
+  <div class="bottle-bg">
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
+  </div>
+
+</div>
+
+<nav>
+  <a href="#probleme">Problème</a>
+  <a href="#solution">Solution</a>
+  <a href="#science">Science</a>
+  <a href="#simulation">Simulation</a>
+  <a href="#equipe">Équipe</a>
+</nav>
+
+<!-- PROBLEME -->
+<section id="probleme" class="bg fade">
+<div class="content card">
+<h2>Problématique</h2>
+<p>
+Les microplastiques sont désormais présents dans l’eau potable, les aliments et même dans le sang humain.
+La chaleur accélère la dégradation des polymères plastiques, favorisant la libération de particules invisibles.
+</p>
+<p>
+Ces particules sont associées à des inflammations, des perturbations endocriniennes et des effets cellulaires encore en cours d’étude.
+</p>
+</div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution" class="fade">
+<div class="card">
+<h2>Solution Aquatherme</h2>
+<p>
+Aquatherme développe une étiquette intelligente biosourcée à base d’anthocyanines extraites de déchets de fruits rouges.
+</p>
+<p>
+Elle change de couleur dès 40°C, signalant une exposition thermique critique sans technologie électronique.
+</p>
+</div>
+</section>
+
+<!-- SCIENCE -->
+<section id="science" class="bg fade">
+<div class="content card">
+<h2>Fondement scientifique</h2>
+<p>
+Les anthocyanines sont des pigments naturels sensibles à la température.
+Leur structure moléculaire se modifie sous l’effet thermique, entraînant un changement visible de couleur.
+</p>
+</div>
+</section>
+
+<!-- SIMULATION -->
+<section id="simulation" class="fade">
+<div class="card">
+<h2>Simulation thermique</h2>
+
+<p>Température : <span id="tempValue">20</span> °C</p>
+
+<input type="range" min="0" max="100" value="20" oninput="updateTemp(this.value)">
+
+<div class="bottle">
+  <div class="liquid" id="liquid"></div>
+  <div class="label" id="label">SAFE</div>
+</div>
+
+<p id="status">Température stable</p>
+
+</div>
+</section>
+
+<!-- EQUIPE -->
+<section id="equipe" class="fade">
+<div class="card">
+<h2>Équipe</h2>
+
+<div class="grid">
+  <div class="member">Ikram Gabes<br><small>Biotechnologue</small></div>
+  <div class="member">Ibtyssem Benhalima<br><small>Biotechnologue</small></div>
+  <div class="member">Rania Aounallah<br><small>Biotechnologue</small></div>
+  <div class="member">Meriem Bensaid<br><small>Biotechnologue</small></div>
+  <div class="member">Manel Brahimi<br><small>Biotechnologue</small></div>
+</div>
+
+</div>
+</section>
+
+<footer>
+Aquatherme — Smart Biopackaging
+</footer>
+
+<script>
+function updateTemp(val){
+  document.getElementById("tempValue").innerText = val;
+
+  let liquid=document.getElementById("liquid");
+  let label=document.getElementById("label");
+  let status=document.getElementById("status");
+
+  let height = 20 + (val/100)*60;
+  liquid.style.height = height + "%";
+
+  if(val < 40){
+    liquid.style.background="linear-gradient(#9d4edd,#c77dff)";
+    label.innerHTML="SAFE";
+    status.innerHTML="Température stable";
+  } else {
+    liquid.style.background="linear-gradient(#ff4d6d,#ff758f)";
+    label.innerHTML="UNSAFE";
+    status.innerHTML="Exposition critique à la chaleur";
+  }
+}
+
+/* animation scroll */
+const fades = document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+  fades.forEach(el=>{
+    let top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add('visible');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
