@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaTherme | L'Innovation qui protège votre vie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --anthro-stable: #5e308c; /* Mauve */
+            --anthro-warm: #b31b1b;   /* Rouge */
+            --anthro-dead: #4a2c1d;   /* Brun */
+            --bg: #050508;
+            --accent: #d8a4ff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg);
+            color: #f0f0f0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(5, 5, 8, 0.9);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        nav a { color: white; text-decoration: none; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; opacity: 0.7; transition: 0.3s; }
+        nav a:hover { opacity: 1; color: var(--accent); }
+
+        /* --- HERO --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: radial-gradient(circle at 50% 50%, #1a1033 0%, var(--bg) 100%);
+        }
+        .badge {
+            background: rgba(216, 164, 255, 0.1);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
+            margin-bottom: 20px;
+        }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin: 0; line-height: 1; }
+
+        /* --- STATS BAND --- */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            background: var(--glass);
+            padding: 40px 20px;
+            border-y: 1px solid var(--border);
+            text-align: center;
+            gap: 30px;
+        }
+        .stat-val { font-size: 2.5rem; font-weight: 800; color: var(--accent); display: block; }
+
+        /* --- SECTIONS --- */
+        section { padding: 100px 20px; max-width: 1100px; margin: auto; }
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 40px;
+            backdrop-filter: blur(10px);
+        }
+        h2 { font-size: 2.5rem; margin-bottom: 30px; background: linear-gradient(to right, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* --- STORYTELLING --- */
+        .story-box { border-left: 4px solid var(--anthro-warm); padding-left: 30px; margin: 40px 0; }
+        .quote { font-style: italic; font-size: 1.2rem; color: #bbb; margin: 20px 0; }
+
+        /* --- SCIENCE GRID --- */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; }
+        .sci-tag { display: inline-block; padding: 4px 12px; background: #222; border-radius: 6px; font-size: 0.7rem; margin-bottom: 10px; }
+
+        /* --- SIMULATEUR --- */
+        .sim-container { text-align: center; }
+        .bottle-sim {
+            width: 150px; height: 320px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-radius: 60px 60px 25px 25px;
+            margin: 40px auto;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255,255,255,0.03);
+        }
+        #label-reaction {
+            position: absolute; top: 45%; width: 100%; height: 80px;
+            background: var(--anthro-stable);
+            display: flex; flex-direction: column; justify-content: center;
+            transition: 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            color: white; font-weight: bold;
+        }
+
+        /* --- FUTURE & TEAM --- */
+        .flex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+        .card-mini { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 20px; text-align: center; border: 1px solid var(--border); }
+        .avatar { width: 60px; height: 60px; background: var(--accent); border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: var(--bg); font-weight: 800; }
+
+        footer { text-align: center; padding: 60px; opacity: 0.4; font-size: 0.8rem; border-top: 1px solid var(--border); }
+
+        input[type=range] { width: 100%; max-width: 400px; accent-color: var(--accent); }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#impact">IMPACT</a>
+        <a href="#science">SCIENCE</a>
+        <a href="#demo">TEST</a>
+        <a href="#future">VISION</a>
+        <a href="#team">ÉQUIPE</a>
+    </nav>
+
+    <header>
+        <div class="badge">BIOTECH STARTUP 2026</div>
+        <h1>AquaTherme</h1>
+        <p style="max-width: 600px; font-size: 1.2rem; opacity: 0.8;">L'encre intelligente qui détecte la dégradation du plastique pour protéger votre santé.</p>
+        <a href="#demo" style="background:var(--accent); color:var(--bg); padding: 15px 35px; border-radius: 50px; text-decoration:none; font-weight:bold; margin-top:30px;">Scanner mon eau</a>
+    </header>
+
+    <!-- IMPACT & STATS -->
+    <div class="stats-bar" id="impact">
+        <div><span class="stat-val">5g</span><p>de plastique ingéré par semaine<br><small>(L'équivalent d'une carte de crédit)</small></p></div>
+        <div><span class="stat-val">90%</span><p>des eaux en bouteille<br><small>contaminées par les microplastiques</small></p></div>
+        <div><span class="stat-val">40°C</span><p>Seuil critique<br><small>de libération des toxines</small></p></div>
+    </div>
+
+    <!-- L'HISTOIRE DE SARAH -->
+    <section>
+        <div class="glass-card">
+            <h2>L'histoire derrière le projet</h2>
+            <div class="story-box">
+                <p>Sarah laissait toujours une bouteille d'eau dans sa voiture pour son fils de 3 ans. Elle pensait bien faire.</p>
+                <div class="quote">"Je ne savais pas que la chaleur transformait cette eau saine en un cocktail chimique invisible. J'ai réalisé que nous étions tous aveugles face à ce danger."</div>
+                <p>C'est pour Sarah, et pour des millions d'autres, que nous avons développé une technologie qui rend le danger <strong>visible</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCIENCE -->
+    <section id="science">
+        <div class="grid-2">
+            <div>
+                <h2>La Science des Anthocyanines</h2>
+                <p>Nos étiquettes utilisent des pigments naturels extraits de fruits rouges. Ces molécules sont des <strong>bio-indicateurs</strong> ultra-sensibles.</p>
+                <div class="sci-tag">Cation Flavylium</div>
+                <div class="sci-tag">Biodégradable</div>
+                <div class="sci-tag">Zéro Électronique</div>
+                <p>Lorsque la bouteille dépasse une température critique, la structure moléculaire de l'encre change radicalement, passant d'un mauve stable à un brun d'alerte.</p>
+            </div>
+            <div class="glass-card" style="text-align: center;">
+                <img src="https://images.unsplash.com/photo-1615485925600-97237c4fc0b1?auto=format&fit=crop&w=400&q=80" alt="Science" style="width: 100%; border-radius: 20px;">
+                <p><small>Extraction d'anthocyanines naturelles</small></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIMULATEUR -->
+    <section id="demo">
+        <div class="glass-card sim-container">
+            <h2>Simulateur de réaction</h2>
+            <p>Glissez pour simuler l'exposition au soleil</p>
+            <h3 id="t-val" style="font-size: 3.5rem; color: var(--accent); margin: 10px 0;">20°C</h3>
+            <input type="range" min="10" max="70" value="20" id="t-slider">
+
+            <div class="bottle-sim">
+                <div id="label-reaction">
+                    <span id="st-main">EAU SAINE</span>
+                    <small id="st-sub">SÉCURITÉ</small>
+                </div>
+            </div>
+            <p id="st-desc" style="opacity: 0.6;">L'eau est à température idéale.</p>
+        </div>
+    </section>
+
+    <!-- PERSPECTIVES -->
+    <section id="future">
+        <h2>Au-delà de la bouteille</h2>
+        <p>Notre vision est d'intégrer AquaTherme dans tous les produits sensibles à la chaleur :</p>
+        <div class="flex-grid">
+            <div class="card-mini"><span>🍼</span><br><strong>Biberons</strong></div>
+            <div class="card-mini"><span>💉</span><br><strong>Vaccins</strong></div>
+            <div class="card-mini"><span>🍱</span><br><strong>Alimentaire</strong></div>
+            <div class="card-mini"><span>💄</span><br><strong>Cosmétique</strong></div>
+        </div>
+    </section>
+
+    <!-- ÉQUIPE -->
+    <section id="team">
+        <div class="glass-card">
+            <h2 style="text-align: center;">L'Équipe AquaTherme</h2>
+            <div class="flex-grid">
+                <div class="member"><div class="avatar">IG</div><strong>Ikram Gabes</strong></div>
+                <div class="member"><div class="avatar">IB</div><strong>Ibtyssem Benhalima</strong></div>
+                <div class="member"><div class="avatar">RA</div><strong>Rania Aounallah</strong></div>
+                <div class="member"><div class="avatar">MB</div><strong>Meriem Bensaid</strong></div>
+                <div class="member"><div class="avatar">MB</div><strong>Manel Brahimi</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        AquaTherme © 2026 — Innover pour une vie sans microplastiques.
+    </footer>
+
+    <script>
+        const slider = document.getElementById('t-slider');
+        const tVal = document.getElementById('t-val');
+        const label = document.getElementById('label-reaction');
+        const main = document.getElementById('st-main');
+        const sub = document.getElementById('st-sub');
+        const desc = document.getElementById('st-desc');
+
+        slider.addEventListener('input', (e) => {
+            const v = e.target.value;
+            tVal.innerText = v + "°C";
+
+            if(v < 39) {
+                label.style.background = "#5e308c";
+                main.innerText = "EAU SAINE";
+                sub.innerText = "SÉCURITÉ";
+                desc.innerText = "Les anthocyanines sont stables. Pas de migration plastique.";
+            } else if(v < 55) {
+                label.style.background = "#b31b1b";
+                main.innerText = "ATTENTION";
+                sub.innerText = "ALERTE CHALEUR";
+                desc.innerText = "Début de la dégradation thermique du PET.";
+            } else {
+                label.style.background = "#4a2c1d";
+                main.innerText = "DANGER";
+                sub.innerText = "CONTAMINÉ";
+                desc.innerText = "EAU IMPROPRE : Présence massive de microplastiques.";
+            }
+        });
+    </script>
+</body>
+</html>
